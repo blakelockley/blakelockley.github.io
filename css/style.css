@@ -191,3 +191,11 @@ a {
 a:hover, a:focus, a:active {
   color: #01527a;
 }
+
+.list-inline-item {
+   background-color: #0088cc;
+}
+
+/* .general-skills .list-inline-item {
+  background-color: #99AAAA;
+} */
