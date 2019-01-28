@@ -1,6 +1,6 @@
-(function($) {
-  "use strict"; // Start of use strict
+"use strict";
 
+(function($) {
   // Smooth scrolling using jQuery easing
   $('a.js-scroll-trigger[href*="#"]:not([href="#"])').click(function() {
     if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
@@ -25,4 +25,107 @@
     target: '#sideNav'
   });
 
-})(jQuery); // End of use strict
+  $('#basketball').click(function(e){
+    $('#overlay').fadeIn();
+    startBasketball();
+  });
+
+  $('#close').click(function(e) {
+    $('#overlay').fadeOut();
+    endBasketball();
+  });
+
+})(jQuery);
+
+var render;
+
+function startBasketball() {
+  var canvas = document.getElementById('world');
+
+  var width = canvas.offsetWidth;
+  var height = canvas.offsetHeight;
+  
+  var engine = Matter.Engine.create();
+  var world = engine.world;
+
+  render = Matter.Render.create({
+    canvas: canvas,
+    engine: engine,
+    options: {
+      width: width,
+      height: height,
+      background: 'transparent',
+      wireframes: false,
+      showAngleIndicator: false
+    }
+  });
+
+  var roof = Matter.Bodies.rectangle(width / 2, -40, width, 80, {
+    isStatic: true,
+    render: {
+      fillStyle: 'red',
+      visible: false
+    }
+  });
+  Matter.World.add(world, roof);
+
+  var floor = Matter.Bodies.rectangle(width / 2, height+40, width, 80, {
+    isStatic: true,
+    render: {
+      fillStyle: 'red',
+      visible: false
+    }
+  });
+  Matter.World.add(world, floor);
+
+  var leftWall = Matter.Bodies.rectangle(230, height / 2, 80, height, {
+    isStatic: true,
+    render: {
+      fillStyle: 'red',
+      visible: false
+    }
+  });
+  Matter.World.add(world, leftWall);
+
+  var rightWall = Matter.Bodies.rectangle(width + 40, height / 2, 80, height, {
+    isStatic: true,
+    render: {
+      fillStyle: 'red',
+      visible: false
+    }
+  });
+  Matter.World.add(world, rightWall);
+
+  var ball = Matter.Bodies.circle(400, 200, 50, {
+    density: 0.04,
+    friction: 0.01,
+    frictionAir: 0.00001,
+    restitution: 0.6,
+    render: {
+      sprite: {
+        texture: './img/basketball.png'
+      }
+    }
+  });
+  Matter.World.add(world, ball);
+
+  var mouseConstraint = Matter.MouseConstraint.create(engine, { //Create Constraint
+    element: canvas,
+    constraint: {
+      render: {
+        visible: false
+      },
+      stiffness:0.8
+    }
+  });
+  Matter.World.add(world, mouseConstraint);
+
+  Matter.Engine.run(engine);
+  Matter.Render.run(render);
+};
+
+function endBasketball(e) {
+  render.canvas = null;
+  render.context = null;
+  render.textures = {};
+};

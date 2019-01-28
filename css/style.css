@@ -199,3 +199,42 @@ a:hover, a:focus, a:active {
 b {
   color: #0088cc;
 }
+
+/* Matter JS - Basketball easter egg */
+
+#basketball {
+  color: orange;
+  text-decoration: underline;
+}
+
+#basketball:hover {
+  cursor: pointer;
+}
+
+#overlay {
+  position:fixed;
+  padding:0;
+  margin:0;
+
+  top:0;
+  left:0;
+
+  width: 100%;
+  height: 100%;
+  
+  background-color: rgba(0,0,0, 0.3);
+
+  z-index: 100;
+}
+
+#world {
+  position:fixed;
+  padding:0;
+  margin:0;
+
+  top:0;
+  left:0;
+
+  width: 100%;
+  height: 100%;
+}
