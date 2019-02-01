@@ -96,11 +96,53 @@ function startBasketball() {
   });
   Matter.World.add(world, rightWall);
 
+  var backboard = Matter.Bodies.rectangle(width / 2, 180, 332, 200, {
+    isStatic: true,
+    collisionFilter: {
+      mask: 0x2
+    },
+    render: {
+      fillStyle: '#FFFFFF',
+      strokeStyle: 'black',
+      lineWidth: 1
+    }
+  });
+  Matter.World.add(world, backboard);
+
+  var square = Matter.Bodies.rectangle(width / 2, 200, 140, 110, {
+    isStatic: true,
+    collisionFilter: {
+      mask: 0x2
+    },
+    render: {
+      fillStyle: '#FFFFFF',
+      strokeStyle: 'black',
+      lineWidth: 3
+    }
+  });
+  Matter.World.add(world, square);
+
+  var hoop = Matter.Bodies.rectangle(width / 2, 245, 130, 4, {
+    isStatic: true,
+    collisionFilter: {
+      mask: 0x2
+    },
+    render: {
+      fillStyle: 'orangered',
+      strokeStyle: 'orangered',
+      lineWidth: 1
+    }
+  });
+  Matter.World.add(world, hoop);
+
   var ball = Matter.Bodies.circle(400, 200, 50, {
     density: 0.04,
     friction: 0.01,
     frictionAir: 0.00001,
     restitution: 0.6,
+    collisionFilter: {
+      mask: 0x1
+    },
     render: {
       sprite: {
         texture: './img/basketball.png'
