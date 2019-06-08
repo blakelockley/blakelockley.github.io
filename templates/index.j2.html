@@ -21,6 +21,8 @@
     <!-- Custom styles for this template -->
     <link href="css/style.css" rel="stylesheet">
 
+    <!-- Hello :) -->
+
   </head>
 
   <body id="page-top">
@@ -66,9 +68,11 @@
           <div class="subheading mb-5">
             <a href="mailto:bwlockley@gmail.com">bwlockley@gmail.com</a>
           </div>
+          {% for item in introduction %}
           <p class="lead mb-5">
-          {{introduction.summary|safe}}
+          {{item.description|safe}}
           </p>
+          {% endfor %}
           <div class="social-icons">
             <a href="https://www.linkedin.com/in/blakelockley/" target="_blank">
               <i class="fab fa-linkedin-in"></i>
@@ -78,6 +82,9 @@
             </a>
             <a href="https://github.com/blakelockley" target="_blank">
               <i class="fab fa-github"></i>
+            </a>
+            <a href="Blake-Lockley-03.pdf" target="_blank">
+              <i class="far fa-file-pdf"></i>
             </a>
           </div>
         </div>
@@ -89,40 +96,20 @@
         <div class="my-auto">
           <h2 class="mb-5">Experience</h2>
 
-          <div class="resume-item d-flex flex-column flex-md-row mb-5">
-            <div class="resume-content mr-auto">
-              <h3 class="mb-0">Consultant</h3>
-              <div class="subheading mb-3">Ernst &amp; Young - Data and Analytics</div>
-              <p>In my penultimate semester at Macquarie University I participated in the PACE (Professional and Community Engagement) Program. We were allocated to teams of four and worked closely with the EYC3 team to develop a recruitment- based application in a client-consultant manner. The application is a web-based platform that allows potential candidates to upload their resumes which are processed using Natural Language Processing and Machine Learning techniques. The program was extremely valuable for developing teamwork and client facing skills. My role within the group was ‘Lead Engineer’, while still contributing to administrative aspects of the project my predominant focus was on implementing the back end of the application entailing interfacing with the database, processing documents, and implementing core functionality.</p>
-            </div>
-            <div class="resume-date text-md-right">
-              <span class="text-primary">September 2018 - Present</span>
-            </div>
-          </div>
+          {% for item in experience %}
 
           <div class="resume-item d-flex flex-column flex-md-row mb-5">
             <div class="resume-content mr-auto">
-              <h3 class="mb-0">iOS Developer</h3>
-              <div class="subheading mb-3">All In Media</div>
-              <p>Working in the iOS team at AIM, I’ve primarily worked on radio streaming iPhone apps, building and maintaining these for a range of Australian broadcasting companies. Apps I’ve worked on primarily revolve around streaming audio which allows users to download and listen to podcasts. The role ranges from building interfaces, implementing the on boarding process to retrieving data from multiple provided APIs. At AIM I've worked on a range of streaming apps for major clients in Australian broadcasting such as the ABC, Southern Cross Austereo and Nova. I have added features in major releases to apps such as ABC Listen, Nova 969, Hit FM, Triple M, and various others. I was given the role of primary developer building the ABC Kids Listen app from start to the first major release, while still providing maintenance and updates to the application. This app was the first app in the company developed in Swift while still leveraging off the company's established reactive framework. ABC Kids Listen is available to download on the App Store.</p>
+              <h3 class="mb-0">{{item.title|safe}}</h3>
+              <div class="subheading mb-3">{{item.company|safe}}</div>
+              <p>{{item.description|safe}}</p>
             </div>
             <div class="resume-date text-md-right">
-              <span class="text-primary">July 2017 - September 2018</span>
+              <span class="text-primary">{{item.time|safe}}</span>
             </div>
           </div>
 
-          <div class="resume-item d-flex flex-column flex-md-row mb-5">
-            <div class="resume-content mr-auto">
-              <h3 class="mb-0">iOS Developer</h3>
-              <div class="subheading mb-3">Skiddoo</div>
-              <p>At Skiddoo, I worked mainly with Swift to recreate their iPhone application in the Swift programming language. I worked within a small team of developers, often communicating with the front end in regards to design related concerns, and the back end about the interaction between the app and the RESTful API. Development of the application required HTTP networking and serialisation of JSON data to retrieve and return data to the API, and monetary transactions for which we provided forms for credit card details along with the inclusion of PayPal and VisaCheckout SDK’s. UI for the application was implemented via Storyboard with UIKit and Autolayout. This is the primary flight booking application offered by Skiddoo and is available for download on the app store.</p>
-            </div>
-            <div class="resume-date text-md-right">
-              <span class="text-primary">December 2015 - December 2016</span>
-            </div>
-          </div>
-
-        </div>
+          {% endfor %}
 
       </section>
 
@@ -287,11 +274,11 @@
       <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="interests">
         <div class="my-auto">
           <h2 class="mb-5">Interests</h2>
+          {% for item in interests %}
           <p class="mb-3">
-          Outside of work I play weekly <b class="basketball">social basketball</b> with a small group of friends. On the weekends I try to spend as much time as possible <b>outdoors</b> unwinding <b>with friends</b>. But when indoors I enjoy reading <b>technical books</b> on programming and science and a working on my own side projects.
-          <br/><br/>
-          My original interest in software was in <b>games programming</b> which has led to me enjoying <b>low-level programming</b>, <b>graphics programing</b> and overall game design. From my recent experience in machine learning and artificial intelligence I’ve developed an interest in <b>generative neural networks</b>, an area in which I hope to focus some time on later in my career.
+            {{item.description|safe}}
           </p>
+          {% endfor %}
         </div>
       </section>
 

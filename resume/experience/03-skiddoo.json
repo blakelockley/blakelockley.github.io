@@ -1,0 +1,6 @@
+{
+    "title": "iOS Developer",
+    "company": "Skiddoo",
+    "description": "At Skiddoo, I worked mainly with Swift to recreate their iPhone application in the Swift programming language. I worked within a small team of developers, often communicating with the front end in regards to design related concerns, and the back end about the interaction between the app and the RESTful API. Development of the application required HTTP networking and serialisation of JSON data to retrieve and return data to the API, and monetary transactions for which we provided forms for credit card details along with the inclusion of PayPal and VisaCheckout SDK’s. UI for the application was implemented via Storyboard with UIKit and Autolayout. This is the primary flight booking application offered by Skiddoo and is available for download on the app store.",
+    "time": "December 2015 - December 2016"
+}
